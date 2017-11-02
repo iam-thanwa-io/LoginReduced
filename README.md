@@ -1,1 +1,1 @@
-# LoginReduced
+# oauth-made-simple
