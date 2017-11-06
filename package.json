@@ -1,0 +1,25 @@
+{
+  "name": "oauth2-ready",
+  "version": "1.0.0",
+  "description": "simple OAUTH2",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iam-thanwa-io/node-oauth2-ready.git"
+  },
+  "keywords": [
+    "oauth",
+    "oauth2",
+    "node",
+    "authentication"
+  ],
+  "author": "Thanwa Ananthaseth",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/iam-thanwa-io/node-oauth2-ready/issues"
+  },
+  "homepage": "https://github.com/iam-thanwa-io/node-oauth2-ready#readme"
+}
