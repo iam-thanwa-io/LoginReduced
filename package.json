@@ -21,5 +21,8 @@
   "bugs": {
     "url": "https://github.com/iam-thanwa-io/node-oauth2-ready/issues"
   },
-  "homepage": "https://github.com/iam-thanwa-io/node-oauth2-ready#readme"
+  "homepage": "https://github.com/iam-thanwa-io/node-oauth2-ready#readme",
+  "devDependencies": {
+    "mocha": "^4.0.1"
+  }
 }
