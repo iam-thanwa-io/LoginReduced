@@ -24,5 +24,8 @@
   "homepage": "https://github.com/iam-thanwa-io/node-oauth2-ready#readme",
   "devDependencies": {
     "mocha": "^4.0.1"
+  },
+  "dependencies": {
+    "express": "^4.16.2"
   }
 }
