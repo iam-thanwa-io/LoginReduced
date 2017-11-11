@@ -27,6 +27,7 @@
     "mocha": "^4.0.1"
   },
   "dependencies": {
-    "express": "^4.16.2"
+    "express": "^4.16.2",
+    "oauth2-server": "^3.0.0"
   }
 }
