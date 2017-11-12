@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha",
-    "start": "node server.js"
+    "start": "node server.js",
+    "build-test": "babel src-test -d test",
+    "build": "babel src -d js"
   },
   "repository": {
     "type": "git",
@@ -25,6 +27,7 @@
   "homepage": "https://github.com/iam-thanwa-io/node-oauth2-ready#readme",
   "devDependencies": {
     "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
     "mocha": "^4.0.1"
   },
   "dependencies": {
