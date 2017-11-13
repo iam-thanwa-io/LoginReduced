@@ -48,11 +48,20 @@ let response = new Response({
   headers: {}
 });
 
-oauth.authenticate(request, response)
-  .then((token) => {
-    // The request was successfully authenticated.
-  })
-  .catch((err) => {
-    // The request failed authentication.
+var assert = require('assert');
+describe('#indexOf()', function() {
+  it('should return -1 when the value is not present', function() {
+    oauth.authenticate(request, response)
+    .then((token) => {
+      // The request was successfully authenticated.
+    })
+    .catch((err) => {
+      // The request failed authentication.
+    });
+
+
+    assert.equal(-1, [1,2,3].indexOf(4));
   });
+});
+  
 
