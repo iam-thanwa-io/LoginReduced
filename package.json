@@ -12,7 +12,7 @@
     "redis": "sudo service redis-server start",
     "redis-stop": "sudo service redis-server stop",
     
-    "startx": "DATABASE_URL=postgres://ubuntu@localhost:5432/oauth2 node serverx.js",
+    "ox": "DATABASE_URL=postgres://ubuntu@localhost:5432/oauth2 node ox.js",
     "build-test": "babel src-test -d test",
     "build-src": "babel src -d js",
     "build": "npm run build-test && npm run build-src"

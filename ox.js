@@ -18,6 +18,11 @@ app.use(function(req, res) {
   res.send('Secret area');
 });
 
+app.get('/public', function(req, res) {
+  // Does not require an access_token.
+  res.send('Public area');
+});
+
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
 });
