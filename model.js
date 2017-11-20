@@ -77,3 +77,7 @@ module.exports.saveAccessToken = function *(token, client, user) {
     return result.rowCount ? result.rows[0] : false; // TODO return object with client: {id: clientId} and user: {id: userId} defined
   });
 };
+
+module.exports.saveAuthorizationCode = function (code, client, user) { //function (code, client, user, [callback])
+  return null;
+};
