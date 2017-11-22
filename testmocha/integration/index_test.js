@@ -185,8 +185,8 @@ describe('ExpressOAuthServer', function() {
         getAccessToken: function() {
           return { user: {}, accessTokenExpiresAt: new Date() };
         },
-        getClient: function() {
-          return { grants: ['authorization_code'], redirectUris: ['http://example.com'] };
+        getClient: function(clientId) {
+          return { id: clientId, grants: ['authorization_code'], redirectUris: ['http://example.com'] };
         },
         saveAuthorizationCode: function() {
           return { authorizationCode: 123 };
