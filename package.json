@@ -4,8 +4,7 @@
   "description": "simple OAUTH2",
   "main": "index.js",
   "scripts": {
-    "test": "mocha",
-    "testmocha": "mocha --recursive testmocha",
+    "test": "mocha --recursive test",
     "start": "node server.js",
     "pg": "sudo service postgresql start",
     "pg-stop": "sudo service postgresql stop",
