@@ -84,8 +84,8 @@ var response = new Response({
 });
 
 var assert = require('assert');
-describe('#indexOf()', function () {
-  it('should return -1 when the value is not present', function () {
+describe('#Test example', function () {
+  it('no assert yet', function () {
     oauth.authenticate(request, response).then(function (token) {
       // The request was successfully authenticated.
     }).catch(function (err) {
