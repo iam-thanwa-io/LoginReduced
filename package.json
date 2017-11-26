@@ -5,12 +5,15 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha --recursive test",
-    "start": "node server.js",
+    "start": "DEBUG=express:* node server.js",
+    
+    "cluster": "node cluster.js",
+    "trace-sync": "DEBUG=express:* node --trace-sync-io server.js",
+    "with-pg": "DEBUG=express:* DATABASE_URL=postgres://ubuntu@localhost:5432/oauth2 node server.js",
     "pg": "sudo service postgresql start",
     "pg-stop": "sudo service postgresql stop",
     "redis": "sudo service redis-server start",
     "redis-stop": "sudo service redis-server stop",
-    "ox": "DEBUG=express:* DATABASE_URL=postgres://ubuntu@localhost:5432/oauth2 node ox.js",
     "build-test": "babel src-test -d test",
     "build-src": "babel src -d js",
     "build": "npm run build-test && npm run build-src"
