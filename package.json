@@ -7,6 +7,7 @@
     "test": "mocha --recursive test",
     "start": "DEBUG=express:* node server.js",
     
+    "test-oauth2-server": "mocha --recursive test-oauth2-server",
     "cluster": "node cluster.js",
     "trace-sync": "DEBUG=express:* node --trace-sync-io server.js",
     "with-pg": "DEBUG=express:* DATABASE_URL=postgres://ubuntu@localhost:5432/oauth2 node server.js",
