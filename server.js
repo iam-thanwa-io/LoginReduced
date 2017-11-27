@@ -1,5 +1,6 @@
 var bodyParser = require('body-parser');
 var express = require('express');
+var favicon = require('serve-favicon');
 var OAuthServer = require('express-oauth-server');
 
 var app = express();
@@ -10,8 +11,15 @@ app.oauth = new OAuthServer({
   model: require('./model'), // See https://github.com/oauthjs/node-oauth2-server for specification
 });
 
+app.use(express.static(__dirname + '/public'));
+app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+
+// app.get('/favicon.ico', function(req, res) {
+//     res.sendStatus(204);
+// });
+
 app.use(app.oauth.authorize());
 
 app.use(function(req, res) {
