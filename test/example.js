@@ -84,14 +84,14 @@ var response = new Response({
 });
 
 var assert = require('assert');
-describe('#Test example', function () {
-  it('no assert yet', function () {
-    oauth.authenticate(request, response).then(function (token) {
-      // The request was successfully authenticated.
-    }).catch(function (err) {
-      // The request failed authentication.
-    });
+// describe('#Test example', function () {
+//   it('no assert yet', function () {
+//     oauth.authenticate(request, response).then(function (token) {
+//       // The request was successfully authenticated.
+//     }).catch(function (err) {
+//       // The request failed authentication.
+//     });
 
-    assert.equal(-1, [1, 2, 3].indexOf(4));
-  });
-});
+//     assert.equal(-1, [1, 2, 3].indexOf(4));
+//   });
+// });
