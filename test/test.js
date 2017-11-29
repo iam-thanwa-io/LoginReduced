@@ -20,7 +20,18 @@ describe('ExpressOAuthServer', function() {
             var oauth = new ExpressOAuthServer({ model: {} });
             sinon.stub(oauth.server, 'authenticate').returns({});
             app.use(oauth.authenticate());
-
+            request(app.listen())
+                .get('/')
+                .end(function() {
+                    oauth.server.authenticate.callCount.should.equal(1);
+                    oauth.server.authenticate.firstCall.args.should.have.length(3);
+                    oauth.server.authenticate.firstCall.args[0].should.be.an.instanceOf(Request);
+                    oauth.server.authenticate.firstCall.args[1].should.be.an.instanceOf(Response);
+                    should.not.exist(oauth.server.authenticate.firstCall.args[2])
+                    oauth.server.authenticate.restore();
+                
+                    done();
+                });
         });
     });
     
