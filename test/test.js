@@ -25,6 +25,10 @@ describe('ExpressOAuthServer', function() {
                 .end(function() {
                     oauth.server.authenticate.callCount.should.equal(1);
                     oauth.server.authenticate.firstCall.args.should.have.length(3);
+                    console.log(oauth.server.authenticate.firstCall.args.length);
+                    console.log(oauth.server.authenticate.firstCall.args[3]);
+                    // console.log(oauth.server.authenticate.firstCall.args[1]);
+                    //console.log(oauth.server.authenticate.firstCall.args[2]);
                     oauth.server.authenticate.firstCall.args[0].should.be.an.instanceOf(Request);
                     oauth.server.authenticate.firstCall.args[1].should.be.an.instanceOf(Response);
                     should.not.exist(oauth.server.authenticate.firstCall.args[2])
