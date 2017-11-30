@@ -4,35 +4,41 @@ var ExpressOAuthServer = require('express-oauth-server');
 var Request = require('oauth2-server').Request;
 var Response = require('oauth2-server').Response;
 var express = require('express');
+var bodyparser = require('body-parser');
 var request = require('supertest');
 var sinon = require('sinon');
 var should = require('should');
+
+var InvalidArgumentError = require('oauth2-server/lib/errors/invalid-argument-error');
+var NodeOAuthServer = require('oauth2-server');
 
 describe('ExpressOAuthServer', function() {
     var app;
 
     beforeEach(function() {
         app = express();
+        
+        app.use(bodyparser.json());
+        app.use(bodyparser.urlencoded({ extended: false }));
     });
     
-    describe('authenticate()', function() {
-        it('should call `authenticate()`', function(done) {
-            var oauth = new ExpressOAuthServer({ model: {} });
-            sinon.stub(oauth.server, 'authenticate').returns({});
-            app.use(oauth.authenticate());
-            request(app.listen())
-                .get('/')
-                .end(function() {
-                    oauth.server.authenticate.callCount.should.equal(1);
-                    oauth.server.authenticate.firstCall.args.should.have.length(3);
-                    oauth.server.authenticate.firstCall.args[0].should.be.an.instanceOf(Request);
-                    oauth.server.authenticate.firstCall.args[1].should.be.an.instanceOf(Response);
-                    should.not.exist(oauth.server.authenticate.firstCall.args[2])
-                    oauth.server.authenticate.restore();
+      describe('constructor()', function() {
+        it('should throw an error if `model` is missing', function() {
+            try {
+                new ExpressOAuthServer({});
                 
-                    done();
-                });
+                should.fail();
+            } catch (e) {
+                e.should.be.an.instanceOf(InvalidArgumentError);
+                e.message.should.equal('Missing parameter: `model`');
+            }
         });
-    });
+    
+        it('should set the `server`', function() {
+          var oauth = new ExpressOAuthServer({ model: {} });
+    
+          oauth.server.should.be.an.instanceOf(NodeOAuthServer);
+        });
+      });
     
 });
