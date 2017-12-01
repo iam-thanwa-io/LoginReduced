@@ -22,23 +22,73 @@ describe('ExpressOAuthServer', function() {
         app.use(bodyparser.urlencoded({ extended: false }));
     });
     
-      describe('constructor()', function() {
-        it('should throw an error if `model` is missing', function() {
-            try {
-                new ExpressOAuthServer({});
-                
-                should.fail();
-            } catch (e) {
-                e.should.be.an.instanceOf(InvalidArgumentError);
-                e.message.should.equal('Missing parameter: `model`');
-            }
-        });
-    
-        it('should set the `server`', function() {
-          var oauth = new ExpressOAuthServer({ model: {} });
-    
-          oauth.server.should.be.an.instanceOf(NodeOAuthServer);
-        });
+  describe('authenticate()', function() {
+    it('should return an error if `model` is empty', function(done) {
+      var oauth = new ExpressOAuthServer({ model: {} });
+
+      app.use(oauth.authenticate());
+
+      request(app.listen())
+        .get('/')
+        .expect({ error: 'invalid_argument', error_description: 'Invalid argument: model does not implement `getAccessToken()`' })
+        .end(done);
+    });
+
+    it('should authenticate the request', function(done) {
+      var tokenExpires = new Date();
+      tokenExpires.setDate(tokenExpires.getDate() + 1);
+
+      var token = { user: {}, accessTokenExpiresAt: tokenExpires };
+      var model = {
+        getAccessToken: function() {
+          return token;
+        }
+      };
+      var oauth = new ExpressOAuthServer({ model: model });
+
+      app.use(oauth.authenticate());
+
+      app.use(function(req, res, next) {
+        res.send();
+
+        next();
       });
+
+      request(app.listen())
+        .get('/')
+        .set('Authorization', 'Bearer foobar')
+        .expect(200)
+        .end(done);
+    });
+
+    it('should cache the authorization token', function(done) {
+      var tokenExpires = new Date();
+      tokenExpires.setDate(tokenExpires.getDate() + 1);
+      var token = { user: {}, accessTokenExpiresAt: tokenExpires };
+      var model = {
+        getAccessToken: function() {
+          return token;
+        }
+      };
+      var oauth = new ExpressOAuthServer({ model: model });
+
+      app.use(oauth.authenticate());
+      
+      var spy = sinon.spy(function(req, res, next) {
+        res.locals.oauth.token.should.equal(token);
+        res.send(token);
+        next();
+      });
+      app.use(spy);
+
+      request(app.listen())
+        .get('/')
+        .set('Authorization', 'Bearer foobar')
+        .expect(200, function(err, res){
+            spy.called.should.be.True();
+            done(err);
+        });
+    });
+  });
     
 });
