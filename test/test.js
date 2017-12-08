@@ -30,7 +30,7 @@ describe('ExpressOAuthServer', function() {
 
       request(app.listen())
         .get('/')
-        .expect({ error: 'invalid_argument', error_description: 'Invalid argument: model does not implement `getAccessToken()`' })
+        .expect({ error: 'invalid_argument', error_description: 'Invalid argument: model does not implement "getAccessToken()"' })
         .end(done);
     });
 
