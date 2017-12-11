@@ -38,7 +38,8 @@ describe('ExpressOAuthServer', function() {
       var tokenExpires = new Date();
       tokenExpires.setDate(tokenExpires.getDate() + 1);
 
-      var token = { user: {}, accessTokenExpiresAt: tokenExpires };
+      //var token = { user: {}, accessTokenExpiresAt: tokenExpires };
+      var token = { user: {}, accessTokenExpiresAt: {} };
       var model = {
         getAccessToken: function() {
           return token;
