@@ -50,7 +50,6 @@ describe('ExpressOAuthServer', function() {
 
       app.use(function(req, res, next) {
         res.send();
-
         next();
       });
 
