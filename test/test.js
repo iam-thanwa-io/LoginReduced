@@ -89,5 +89,4 @@ describe('ExpressOAuthServer', function() {
         });
     });
   });
-    
 });
