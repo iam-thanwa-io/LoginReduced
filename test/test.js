@@ -79,10 +79,9 @@ describe('ExpressOAuthServer', function() {
         next();
       });
       app.use(spy);
-
       request(app.listen())
         .get('/')
-        .set('Authorization', 'Bearer foobarXXXXXX')
+        .set('Authorization', 'Bearer foobar')
         .expect(200, function(err, res){
             spy.called.should.be.True();
             done(err);
