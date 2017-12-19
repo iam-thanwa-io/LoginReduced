@@ -23,7 +23,7 @@ describe('ExpressOAuthServer', function() {
     });
     
   describe('authorize()', function() {
-    it('should cache the authorization code', function(done) {
+    it('should cache the authorization code xx', function(done) {
       var tokenExpires = new Date();
       tokenExpires.setDate(tokenExpires.getDate() + 1);
 
