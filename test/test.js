@@ -111,8 +111,6 @@ describe('ExpressOAuthServer', function() {
     });
 
 
-//check this again xx
-
     it('should return an error if `model` is empty', function(done) {
       var oauth = new ExpressOAuthServer({ model: {} });
 
