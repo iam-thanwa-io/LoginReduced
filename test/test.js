@@ -26,8 +26,8 @@ describe('ExpressOAuthServer', function() {
     it('should cache the authorization code', function(done) {
       var tokenExpires = new Date();
       tokenExpires.setDate(tokenExpires.getDate() + 1);
-
-      var code = { authorizationCode: 123 };
+ 
+      var code = { authorizationCode: 123456 }; //original is 123
       var model = {
         getAccessToken: function() {
           return { user: {}, accessTokenExpiresAt: tokenExpires };
@@ -109,7 +109,6 @@ describe('ExpressOAuthServer', function() {
         .expect('Location', 'http://example.com/?code=123&state=foobiz')
         .end(done);
     });
-
 
     it('should return an error if `model` is empty', function(done) {
       var oauth = new ExpressOAuthServer({ model: {} });
