@@ -199,7 +199,7 @@ describe('ExpressOAuthServer', function() {
       request(app.listen())
         .post('/?state=foobiz')
         .set('Authorization', 'Bearer foobar')
-        .send({ client_id: 12345, response_type: 'code' })
+        .send({ client_id: 1234567890, response_type: 'code' })
         .expect('Location', 'http://example.com/?code=123&state=foobiz')
         .end(done);
     });
