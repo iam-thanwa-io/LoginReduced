@@ -27,7 +27,7 @@ describe('ExpressOAuthServer', function() {
       var tokenExpires = new Date();
       tokenExpires.setDate(tokenExpires.getDate() + 1);
  
-      var code = { authorizationCode: 123 };
+      var code = { authorizationCode: 123kkkk };
       var model = {
         getAccessToken: function() {
           return { user: {}, accessTokenExpiresAt: tokenExpires };
