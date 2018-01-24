@@ -47,7 +47,7 @@ describe('ExpressOAuthServer', function() {
         res.locals.oauth.code.should.equal(code);
         next();
       });
-      app.use(spy);
+      app.use(spyxxxx);
 
       request(app.listen())
         .post('/?state=foobiz')
