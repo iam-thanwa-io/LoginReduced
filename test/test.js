@@ -53,7 +53,7 @@ describe('ExpressOAuthServer', function() {
         .post('/?state=foobiz')
         .set('Authorization', 'Bearer foobar')
         .send({ client_id: 12345, response_type: 'code' })
-        .expect(302, function(err, res){ //TODO-check that should we also return 302 code?? 
+        .expect(302, function(err, res){ //TODO - check that should we also return 302 code?? 
             spy.called.should.be.True();
             done(err);
         });
