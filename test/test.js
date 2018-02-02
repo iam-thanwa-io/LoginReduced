@@ -27,13 +27,13 @@ describe('ExpressOAuthServer', function() {
       var tokenExpires = new Date();
       tokenExpires.setDate(tokenExpires.getDate() + 1);
  
-      var code = { authorizationCode: 123X };
+      var code = { authorizationCode: 123 };
       var model = {
         getAccessToken: function() {
           return { user: {}, accessTokenExpiresAt: tokenExpires };
         },
         getClient: function() {
-          return { grants: ['authorization_code'], redirectUris: ['http://example.com'] };
+          return { grants: ['authorization_code'], redirectUris: ['http://example-com.firebase.com'] };
         },
         saveAuthorizationCode: function() {
           return code;
