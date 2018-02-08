@@ -33,7 +33,7 @@ describe('ExpressOAuthServer', function() {
           return { user: {}, accessTokenExpiresAt: tokenExpires };
         },
         getClient: function() {
-          return { grants: ['authorization_code'], redirectUris: ['http://project-097FDE 4.firebase.com'] };
+          return { grants: ['authorization_code'], redirectUris: ['http://project-097FDE4.firebase.com'] };
         },
         saveAuthorizationCode: function() {
           return code;
