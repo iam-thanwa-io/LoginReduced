@@ -39,6 +39,7 @@ describe('ExpressOAuthServer', function() {
           return code;
         }
       };
+      //Need to consider more options around here 
       var oauth = new ExpressOAuthServer({ model: model, continueMiddleware: true });
 
       app.use(oauth.authorize());
